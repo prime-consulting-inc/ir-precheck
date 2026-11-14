@@ -1,7 +1,5 @@
 # ir-precheck
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-
 適時開示・決算短信・決算説明会資料・成長可能性資料を提出する前に、ファイルに残りやすい形式面のミスを点検するAIスキルです。PDF・Word・PowerPoint・Excelを読み、指摘を「要修正」「要確認」「情報」に分けて日本語で返します。
 
 作成：株式会社プライムコンサルティング
@@ -67,7 +65,7 @@ npx skills update ir-precheck
 
 ### claude.ai（Web版・デスクトップ版）
 
-[リリース](https://github.com/prime-consulting-inc/ir-precheck/releases/latest)から `ir-precheck.zip` をダウンロードし、解凍せずにスキルの登録画面からアップロードします。GitHubの「Download ZIP」で取れるリポジトリ全体のZIPは、登録用ではありません。
+[リリース](https://github.com/prime-consulting-inc/ir-precheck/releases/latest)に添付した `ir-precheck.zip` を、claude.aiのスキルの追加画面からアップロードします。この `ir-precheck.zip` にはスキルのフォルダだけが入っています。リポジトリのトップページから取得したZIPには開発用のファイルも含まれるため、こちらを使ってください。
 
 ### 必要なもの
 
@@ -112,7 +110,7 @@ python3 skills/ir-precheck/scripts/ir_precheck.py \
 
 ## 点検しないもの
 
-グラフの棒の長さと数値の一致、他社ロゴ、中期経営計画との整合、画像になった文字、年のない日付（「11月20日（木）」）の曜日は見ていません。[`manual_checklist.md`](./skills/ir-precheck/references/manual_checklist.md) で目視確認してください。わかっている見逃しと誤検知は [docs/limitations.md](./docs/limitations.md) にまとめています。
+グラフの棒の長さと数値の一致、他社ロゴ、中期経営計画との整合、画像になった文字、年のない日付（「11月20日（木）」）の曜日は見ていません。[`manual_checklist.md`](./skills/ir-precheck/references/manual_checklist.md) で目視確認してください。わかっている見逃しと誤検知は [docs/known-issues.md](./docs/known-issues.md) にまとめています。
 
 ## 更新
 
