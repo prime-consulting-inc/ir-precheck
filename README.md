@@ -67,6 +67,20 @@ npx skills update ir-precheck
 
 [リリース](https://github.com/prime-consulting-inc/ir-precheck/releases/latest)に添付した `ir-precheck.zip` を、claude.aiのスキルの追加画面からアップロードします。この `ir-precheck.zip` にはスキルのフォルダだけが入っています。リポジトリのトップページから取得したZIPには開発用のファイルも含まれるため、こちらを使ってください。
 
+### Codex・GitHub Copilot
+
+SKILL.md は共通の形式（Agent Skills）で書いているので、Codex と GitHub Copilot（Copilot CLI、VS Code のエージェントモード、cloud agent）でも使えます。
+
+```bash
+# Codex（作業するリポジトリの .agents/skills/ に入ります）
+npx skills add prime-consulting-inc/ir-precheck -a codex
+
+# GitHub Copilot（GitHub CLI 2.90.0 以降）
+gh skill install prime-consulting-inc/ir-precheck ir-precheck
+```
+
+手で置く場合は `skills/ir-precheck/` フォルダごと、Codex なら `.agents/skills/`、Copilot なら `.github/skills/` の下にコピーします。どちらもスクリプトを動かすため、その環境に Python とライブラリが要ります。cloud agent などネットワークが制限された環境では、`pip install` ができずに「未検査」になることがあります。
+
 ### 必要なもの
 
 Python 3.9以上と、`skills/ir-precheck/requirements.txt` のライブラリ（PyMuPDF、python-docx、python-pptx、openpyxl）が要ります。ライブラリがないときは、そのファイルが「未検査」と表示されます。

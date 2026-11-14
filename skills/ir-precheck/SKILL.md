@@ -29,13 +29,15 @@ metadata:
 
 ## 実行
 
+スクリプトは、このSKILL.mdと同じフォルダの `scripts/ir_precheck.py` です。以下の `<スキルのフォルダ>` は、このSKILL.mdがあるフォルダの絶対パスに置き換えて実行します（Claude Code では `${CLAUDE_SKILL_DIR}` で参照できます）。
+
 ```bash
-python3 ${CLAUDE_SKILL_DIR}/scripts/ir_precheck.py --json \
+python3 <スキルのフォルダ>/scripts/ir_precheck.py --json \
   --company "〇〇株式会社" --code 1234 --period "2027年3月期" --date 2026-11-13 \
   提出予定.pdf 説明会資料.pptx
 ```
 
-`python3` がなければ `python` または `py -3` で実行します。PyMuPDF などのライブラリがないときは「未検査」と出るので、`pip install -r ${CLAUDE_SKILL_DIR}/requirements.txt` を実行してから再実行します。
+`python3` がなければ `python` または `py -3` で実行します。PyMuPDF などのライブラリがないときは「未検査」と出るので、`pip install -r <スキルのフォルダ>/requirements.txt` を実行してから再実行します。
 
 結果は `--json` の出力で判断します。
 
@@ -85,14 +87,14 @@ python3 ${CLAUDE_SKILL_DIR}/scripts/ir_precheck.py --json \
 文書のプロパティだけを消したPDFが必要なら、別の名前で書き出します。
 
 ```bash
-python3 ${CLAUDE_SKILL_DIR}/scripts/ir_precheck.py --clean-metadata 公開用.pdf 提出予定.pdf
+python3 <スキルのフォルダ>/scripts/ir_precheck.py --clean-metadata 公開用.pdf 提出予定.pdf
 ```
 
 書き出した `公開用.pdf` にも、通常のチェックをもう一度実行します。このコピーで消えるのは文書のプロパティだけで、注釈・黒塗り・本文は直りません。
 
 ## 目視チェックへの引き継ぎ
 
-最後に `${CLAUDE_SKILL_DIR}/references/manual_checklist.md` を渡し、作成者とは別の人が確認するよう伝えます。グラフと数値の一致、他社ロゴ、中期経営計画との整合、画像化された文字、TDnetのプロパティ確認画面は、このチェックでは見ていません。
+最後に 同じフォルダの `references/manual_checklist.md` を渡し、作成者とは別の人が確認するよう伝えます。グラフと数値の一致、他社ロゴ、中期経営計画との整合、画像化された文字、TDnetのプロパティ確認画面は、このチェックでは見ていません。
 
 報告の末尾には次の一文を必ず入れます。
 
