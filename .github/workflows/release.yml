@@ -1,7 +1,10 @@
 name: Release
 
-# v1.0.0 のようなタグを push すると、claude.ai 登録用の ir-precheck.zip を作ってリリースに添付する
+# GitHub の画面でリリースを公開したとき、または v1.0.0 のようなタグを push したときに、
+# claude.ai 登録用の ir-precheck.zip を作ってリリースに添付する
 on:
+  release:
+    types: [published]
   push:
     tags: ["v*"]
 
