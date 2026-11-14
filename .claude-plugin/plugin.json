@@ -1,0 +1,12 @@
+{
+  "name": "ir-precheck",
+  "description": "IR開示資料（適時開示・決算短信・説明会資料）を提出前に点検し、プロパティの残り・コメント・黒塗りの残存などを日本語で返すスキル",
+  "version": "1.0.0",
+  "skills": "./skills/",
+  "author": {
+    "name": "Prime Consulting Inc."
+  },
+  "homepage": "https://github.com/prime-consulting-inc/ir-precheck",
+  "repository": "https://github.com/prime-consulting-inc/ir-precheck",
+  "license": "MIT"
+}

@@ -1,0 +1,2 @@
+-r skills/ir-precheck/requirements.txt
+pytest>=8

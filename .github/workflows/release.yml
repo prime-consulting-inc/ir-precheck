@@ -1,0 +1,26 @@
+name: Release
+
+# v1.0.0 のようなタグを push すると、claude.ai 登録用の ir-precheck.zip を作ってリリースに添付する
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  zip:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build ir-precheck.zip (skill folder only)
+        run: |
+          mkdir -p dist
+          cd skills
+          zip -r ../dist/ir-precheck.zip ir-precheck -x '*/__pycache__/*' '*.pyc' '*/.DS_Store'
+      - name: Upload to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes "CHANGELOG.md を見てください。"
+          gh release upload "$GITHUB_REF_NAME" dist/ir-precheck.zip --clobber

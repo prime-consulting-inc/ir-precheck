@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ir-precheck",
+  "description": "Claude Code marketplace for ir-precheck",
+  "owner": {
+    "name": "Prime Consulting Inc."
+  },
+  "plugins": [
+    {
+      "name": "ir-precheck",
+      "description": "IR開示資料（適時開示・決算短信・説明会資料）を提出前に点検し、プロパティの残り・コメント・黒塗りの残存などを日本語で返すスキル",
+      "version": "1.0.0",
+      "author": {
+        "name": "Prime Consulting Inc."
+      },
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/prime-consulting-inc/ir-precheck",
+      "repository": "https://github.com/prime-consulting-inc/ir-precheck",
+      "license": "MIT"
+    }
+  ]
+}
