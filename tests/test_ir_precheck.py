@@ -24,6 +24,7 @@ def run(*args: str) -> tuple[int, dict]:
         [sys.executable, "-I", str(SCRIPT), "--json", *args],
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
     return proc.returncode, json.loads(proc.stdout) if proc.stdout.strip() else {}
 
@@ -202,9 +203,9 @@ def test_missing_and_unsupported_files_are_unchecked(tmp_path):
 
 def test_bad_arguments_exit_3(tmp_path):
     pdf = make_pdf(tmp_path / "x.pdf", ["テスト"])
-    proc = subprocess.run([sys.executable, "-I", str(SCRIPT), "--date", "あした", str(pdf)], capture_output=True, text=True)
+    proc = subprocess.run([sys.executable, "-I", str(SCRIPT), "--date", "あした", str(pdf)], capture_output=True, text=True, encoding="utf-8")
     assert proc.returncode == 3
-    proc = subprocess.run([sys.executable, "-I", str(SCRIPT), "--no-such-option", str(pdf)], capture_output=True, text=True)
+    proc = subprocess.run([sys.executable, "-I", str(SCRIPT), "--no-such-option", str(pdf)], capture_output=True, text=True, encoding="utf-8")
     assert proc.returncode == 3
 
 

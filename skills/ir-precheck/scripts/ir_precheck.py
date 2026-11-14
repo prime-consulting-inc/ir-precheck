@@ -1676,7 +1676,17 @@ class _Parser(argparse.ArgumentParser):
         raise SystemExit(3)
 
 
+def _utf8_stdio() -> None:
+    """Windows の既定（cp1252・cp932）でも日本語の結果が途中で止まらないよう、出力をUTF-8にする。"""
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[attr-defined]
+        except Exception:
+            pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    _utf8_stdio()
     p = _Parser(description=f"IR開示資料の提出前チェッカー（ir-precheck {__version__}）")
     p.add_argument("files", nargs="+", help="PDF / DOCX / PPTX / XLSX")
     p.add_argument("--company", help="自社名（例: 株式会社〇〇 / 〇〇株式会社）")
